@@ -202,11 +202,9 @@ void loop()
     int ready = MPU9250.checkNewAccelGyroData();
     if (!ready) return;
 
-    clock_gettime(CLOCK_MONOTONIC, &ts);
-    nsec = (ts.tv_sec * 1000000000) + ts.tv_nsec;
-
+    
       
-     MPU9250.readMPU9250Data(MPU9250Data1); // INT cleared on any read
+    MPU9250.readMPU9250Data(MPU9250Data1); // INT cleared on any read
    
     // Now we'll calculate the accleration value into actual g's
      ax1 = (float)MPU9250Data1[0]*aRes - accelBias1[0];  // get actual g value, this depends on scale being set
